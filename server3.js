@@ -13,15 +13,15 @@ app.use((req,res,next) =>{
 	console.log(`time stamp is - ${currentTime}`);
 	console.log(`Request method is - ${req.method}`);
 	console.log(`URL Visited is - ${req.url}`);
-	
+
 	var storedata = `${currentTime} ${req.method} ${req.url}`;
 	fs.appendFile('savedata.log',storedata + '\n', (err) =>{
 		if(err){
 			console.log("error");
 		}
 });
-next();	
-})
+next();
+});
 
 app.use((req,res,next) =>{
 	res.render('mant.hbs');
@@ -51,4 +51,3 @@ app.get('/error', (req, res) => {
 app.listen(port, () => {
     console.log(`App listening on port number :- ${port}...!!!`);
 });
- 
